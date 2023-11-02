@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Perfume;
 use Illuminate\Http\Request;
 
 class PerfumeController extends Controller
@@ -14,7 +15,8 @@ class PerfumeController extends Controller
      */
     public function index()
     {
-        //
+        $perfumes = Perfume::all();
+        return view('perfumes.index', compact('index'));
     }
 
     /**
@@ -24,7 +26,7 @@ class PerfumeController extends Controller
      */
     public function create()
     {
-        //
+        return view('perfumes.create');
     }
 
     /**
