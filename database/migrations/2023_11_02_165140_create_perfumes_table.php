@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('gender', 20);
             $table->string('brand', 50);
             $table->string('size', 10);
-            $table->decimal('price', 4, 2);
+            $table->decimal('price', 10, 2);
             $table->text('description')->nullable();
             $table->boolean('available')->default(true);
             $table->timestamps();
