@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -17,4 +17,15 @@
     </h1>
 </body>
 
-</html>
+</html> --}}
+
+@extends('layouts.app')
+@section('content')
+    <main>
+        <div class="w-full h-full bg-blue-300">
+            <div class="container py-5 text-center">
+                <h1>Benvenuto in My Beauty Shop</h1>
+            </div>
+        </div>
+    </main>
+@endsection

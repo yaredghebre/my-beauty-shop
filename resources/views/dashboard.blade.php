@@ -1,17 +1,26 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+@extends('layouts.app')
+
+@section('content')
+    <div class="container mx-auto">
+        <h2 class="text-gray-500 text-xl my-4">
             {{ __('Dashboard') }}
         </h2>
-    </x-slot>
+        <div class="flex justify-center">
+            <div class="w-full">
+                <div class="bg-white shadow-md p-4">
+                    <div class="font-bold text-lg">{{ __('User Dashboard') }}</div>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+                    <div class="mt-4">
+                        @if (session('status'))
+                            <div class="bg-green-200 text-green-700 py-2 px-4 rounded">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+
+                        {{ __('You are logged in!') }}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection
