@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- Heading --}}
-    <h1 class="text-center text-5xl mb-[50px]">Perfumes</h1>
+    <h1 class="text-center text-5xl mb-[50px] pt-10">Perfumes</h1>
 
     {{-- Table --}}
     <div class="absolute right-0 overflow-x-auto w-[88%] mx-[20px]">
@@ -60,11 +60,25 @@
                         <td class="px-6 py-4">
                             {{ $perfume->description }}
                         </td>
+                        <td class="px-6 py-4 flex gap-4">
+                            <a href="{{ route('admin.perfumes.show', $perfume->id) }}">
+                                <i class="fa-solid fa-magnifying-glass fa-xl hover:scale-125 transform transition duration-200"
+                                    style="color: #00ff00;"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa-solid fa-pen-to-square fa-xl hover:scale-125 transform transition duration-200"
+                                    style="color: #0000ff;"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa-regular fa-trash-can fa-xl hover:scale-125 transform transition duration-200"
+                                    style="color: #ff0000;"></i>
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
 
+                {{-- Pagination --}}
                 {{ $perfumes->links() }}
-
             </tbody>
         </table>
     </div>
