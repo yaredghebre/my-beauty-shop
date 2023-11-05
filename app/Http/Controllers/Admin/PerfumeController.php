@@ -13,10 +13,11 @@ class PerfumeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $perfumes = Perfume::all();
-        return view('perfumes.index', compact('index'));
+        $data = $request->all();
+        $perfumes = Perfume::paginate(15);
+        return view('admin.perfumes.index', compact('perfumes'));
     }
 
     /**
@@ -26,7 +27,7 @@ class PerfumeController extends Controller
      */
     public function create()
     {
-        return view('perfumes.create');
+        return view('admin.perfumes.create');
     }
 
     /**

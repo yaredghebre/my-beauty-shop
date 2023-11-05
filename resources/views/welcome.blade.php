@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
     <main>
-        <div class="w-full h-full bg-blue-300">
-            <div class="py-5 h-screen text-center">
+        <div class="bg-blue-300">
+            <div class="">
                 <h1 class="text-5xl my-[20px]">Benvenuto in <span class="font-bold">My Beauty Shop</span></h1>
                 <p class="my-[20px] text-2xl">Questa è la pagina iniziale della piattaforma, dove puoi gestire interamente i
                     tuoi

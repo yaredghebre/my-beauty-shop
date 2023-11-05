@@ -47,25 +47,7 @@
         </div>
     </header>
 
-    <main class="h-screen bg-blue-300 ">
-        {{-- Side Nav --}}
-        {{-- <nav class="w-[300px] bg-slate-600">
-            <ul class="text-white text-xl pt-5 pl-5 flex flex-col gap-3">
-                <li>
-                    <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-slate-700' : '' }}"
-                        href="{{ route('admin.dashboard') }}">
-                        <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}"
-                        href="{{ route('admin.dashboard') }}">
-                        <i class="fa-solid fa-flask fa-lg fa-fw"></i> Perfumes
-                    </a>
-                </li>
-                <li>Others</li>
-            </ul>
-        </nav> --}}
+    <main class="h-screen bg-blue-300">
 
         <!-- Sidenav -->
         <nav id="sidenav-3"
@@ -93,7 +75,8 @@
                     <ul class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
                         data-te-sidenav-collapse-ref>
                         <li class="relative">
-                            <a class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-300 outline-none transition duration-300 ease-linear hover:bg-white/10 hover:outline-none focus:bg-white/10 focus:outline-none active:bg-white/10 active:outline-none data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none"
+                            <a href="{{ route('admin.dashboard') }}"
+                                class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-300 outline-none transition duration-300 ease-linear hover:bg-white/10 hover:outline-none focus:bg-white/10 focus:outline-none active:bg-white/10 active:outline-none data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none"
                                 data-te-sidenav-link-ref>Profile</a>
                         </li>
                     </ul>
@@ -119,7 +102,8 @@
                     <ul class="show !visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
                         data-te-sidenav-collapse-ref>
                         <li class="relative">
-                            <a class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-300 outline-none transition duration-300 ease-linear hover:bg-white/10 hover:outline-none focus:bg-white/10 focus:outline-none active:bg-white/10 active:outline-none data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none"
+                            <a href="{{ route('admin.perfumes.index') }}"
+                                class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-300 outline-none transition duration-300 ease-linear hover:bg-white/10 hover:outline-none focus:bg-white/10 focus:outline-none active:bg-white/10 active:outline-none data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none"
                                 data-te-sidenav-link-ref>Perfumes</a>
                         </li>
                         <li class="relative">
@@ -147,7 +131,9 @@
         <!-- Toggler -->
 
         {{-- Main Content (Message) --}}
-        @yield('content')
+        <div class="">
+            @yield('content')
+        </div>
     </main>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script> --}}
     <script type="text/javascript" src="../node_modules/tw-elements/dist/js/tw-elements.umd.min.js"></script>
