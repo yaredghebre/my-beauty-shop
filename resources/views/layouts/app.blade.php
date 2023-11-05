@@ -20,12 +20,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="">
+<body>
     <div class="min-h-screen bg-gray-100">
-        {{-- @include('layouts.navigation') --}}
 
         <!-- Page Heading -->
-        <nav class="w-full py-10 bg-blue-500">
+        <header class="w-full py-10 bg-blue-500">
             <div class="mx-[150px] flex items-center justify-between">
                 {{-- Left Side --}}
                 <a class="text-3xl" href="#">My Beauty Shop</a>
@@ -63,7 +62,7 @@
                             </div>
                             <ul class="py-2 text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformationButton">
                                 <li>
-                                    <a href="#"
+                                    <a href="/admin"
                                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                                 </li>
 
@@ -85,7 +84,7 @@
                     @endguest
                 </ul>
             </div>
-        </nav>
+        </header>
 
         <!-- Page Content -->
         <main>

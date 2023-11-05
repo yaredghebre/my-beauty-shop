@@ -1,30 +1,17 @@
-{{-- <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-
-    @vite('resources/css/app.css')
-
-</head>
-
-<body>
-    <h1 class="text-3xl font-bold underline bg-red-500">
-        Hello world!
-    </h1>
-</body>
-
-</html> --}}
-
 @extends('layouts.app')
 @section('content')
     <main>
         <div class="w-full h-full bg-blue-300">
-            <div class="container py-5 text-center">
-                <h1>Benvenuto in My Beauty Shop</h1>
+            <div class="py-5 h-screen text-center">
+                <h1 class="text-5xl my-[20px]">Benvenuto in <span class="font-bold">My Beauty Shop</span></h1>
+                <p class="my-[20px] text-2xl">Questa è la pagina iniziale della piattaforma, dove puoi gestire interamente i
+                    tuoi
+                    prodotti!</p>
+                <p class="text-2xl">Inizia la tua esperienza cliccando su <span class="font-bold">Login</span> per entrare
+                    nella tua Dashboard, oppure, su
+                    <span class="font-bold">Register</span> per
+                    creare un nuovo profilo.
+                </p>
             </div>
         </div>
     </main>
