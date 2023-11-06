@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="absolute right-0 overflow-x-auto w-[88%] mx-[20px] pt-12">
+    <div class="">
 
         <div class="flex justify-center">
-            <div class=" bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <img class="rounded-t-lg h-[500px] w-full bg-cover" src="https://picsum.photos/500" alt="" />
+            <div class="max-w-2xl bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <img class="rounded-t-lg w-full" src="https://picsum.photos/500" alt="" />
                 <div class="p-5">
                     <h5 class="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $perfume->title }}
                     </h5>

@@ -2,10 +2,10 @@
 
 @section('content')
     {{-- Heading --}}
-    <h1 class="text-center text-5xl mb-[50px] pt-10">Perfumes</h1>
+    <h1 class="text-center text-5xl">Perfumes</h1>
 
     {{-- Table --}}
-    <div class="absolute right-0 overflow-x-auto w-[88%] mx-[20px]">
+    <div class="">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
