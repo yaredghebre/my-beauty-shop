@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Perfume;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,16 @@ class PerfumeController extends Controller
     public function index(Request $request)
     {
         $data = $request->all();
-        $perfumes = Perfume::paginate(15);
-        return view('admin.perfumes.index', compact('perfumes'));
+
+        if ($request->has('category_id') && !is_null($data['category_id'])) {
+            $perfumes = Perfume::where('category_id', $data['category_id'])->paginate(15);
+        } else {
+            $perfumes = Perfume::paginate(15);
+        }
+        // $perfumes = Perfume::paginate(15);
+
+        $categories = Category::all();
+        return view('admin.perfumes.index', compact('perfumes', 'categories'));
     }
 
     /**
