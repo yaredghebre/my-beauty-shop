@@ -33,17 +33,53 @@
             <a class="text-3xl" href="/">My Beauty Shop</a>
 
             {{-- Right Side --}}
-            <div class="">
-                <a href="{{ route('logout') }}" class="px-4 py-2 text-2xl hover:text-white"
-                    onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
+            <ul class="flex">
+                @guest
+                    <li>
+                        <a href="{{ route('login') }}"
+                            class="block px-4 py-2 text-2xl hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">{{ __('Login') }}</a>
+                    </li>
+                    @if (Route::has('register'))
+                        <li>
+                            <a href="{{ route('register') }}"
+                                class="block px-4 py-2 text-2xl hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">{{ __('Register') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <button id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation"
+                        class="text-white text-2xl bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        type="button">Menu <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg>
+                    </button>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                    @csrf
-                </form>
-            </div>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownInformation"
+                        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                        <div class="px-4 py-3 text-gray-900 dark:text-white">
+                            <div>
+                                <span class="font-bold">{{ Auth::user()->name }}</span>
+                            </div>
+                        </div>
+
+                        <div class="py-2">
+                            <a href="{{ route('logout') }}"
+                                class="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
+
+                @endguest
+            </ul>
         </div>
     </header>
 
@@ -122,6 +158,7 @@
         </div>
     </main>
     <script type="text/javascript" src="../node_modules/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
 
 </body>
 

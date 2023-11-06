@@ -23,7 +23,7 @@
 <body>
     <div class="min-h-screen bg-gray-100">
 
-        <!-- Page Heading -->
+        <!-- PAGE HEADING -->
         <header class="w-full py-10 bg-blue-500">
             <div class="mx-[150px] flex items-center justify-between">
                 {{-- Left Side --}}
