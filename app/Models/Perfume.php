@@ -9,5 +9,10 @@ class Perfume extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'gender', 'brand', 'size', 'price', 'description', 'available'];
+    protected $fillable = ['title', 'brand', 'size', 'price', 'description', 'available'];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

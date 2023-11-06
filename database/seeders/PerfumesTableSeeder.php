@@ -20,7 +20,6 @@ class PerfumesTableSeeder extends Seeder
         for ($i = 0; $i < 50; $i++) {
             $perfume = new Perfume();
             $perfume->title = $faker->sentence(2);
-            $perfume->gender = $faker->randomElement(["Man", "Woman", "Unisex"]);
             $perfume->brand = $faker->randomElement(["Armani", "Paco Rabanne", "Dolce & Gabbana", "Tommy Hilfiger", "Calvin Klein", "Chanel", "Gucci", "Dior", "Versace"]);
             $perfume->size = $faker->randomElement(["Small", "Medium", "Large"]);
             $perfume->price = $faker->randomFloat(2, 10, 200);

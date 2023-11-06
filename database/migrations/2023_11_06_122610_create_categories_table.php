@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('perfumes', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 150)->unique();
-            $table->string('brand', 50);
-            $table->string('size', 10);
-            $table->decimal('price', 10, 2);
-            $table->text('description')->nullable();
-            $table->boolean('available')->default(true);
+            $table->string('name', 15);
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('perfumes');
+        Schema::dropIfExists('categories');
     }
 };
