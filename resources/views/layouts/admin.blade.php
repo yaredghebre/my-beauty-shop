@@ -87,7 +87,7 @@
     {{-- / PAGE HEADING --}}
 
     {{-- MAIN  --}}
-    <main class=" bg-blue-300 flex">
+    <main class="h-screen bg-blue-300 flex">
 
         <!-- Sidenav -->
         <aside id="default-sidebar" class="w-1/6 transition-transform -translate-x-full sm:translate-x-0"

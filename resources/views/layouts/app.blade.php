@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <div class="min-h-screen bg-gray-100">
+    <div class="bg-gray-100">
 
         <!-- PAGE HEADING -->
         <header class="w-full py-10 bg-blue-500">

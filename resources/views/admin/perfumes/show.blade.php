@@ -7,7 +7,14 @@
             <div class="max-w-2xl bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 
                 {{-- Card Image --}}
-                <img class="rounded-t-lg w-full" src="https://picsum.photos/500" alt="{{ $perfume->title }}" />
+                @if ($perfume->image)
+                    <img class="rounded-t-lg w-full" src="{{ asset('storage/' . $perfume->image) }}"
+                        alt="{{ $perfume->title }}" />
+                @else
+                    <div class="rounded-t-lg w-full bg-gray-300 h-[300px] flex justify-center items-center">
+                        <span class="font-bold text-3xl text-red-900">Image not available</span>
+                    </div>
+                @endif
 
                 {{-- Card Body --}}
                 <div class="p-5">
