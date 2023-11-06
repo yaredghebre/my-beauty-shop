@@ -19,7 +19,7 @@ class CategoriesTableSeeder extends Seeder
 
         foreach ($categories as $category_value) {
             $new_category = new Category();
-            $new_category->name =  $category_value;
+            $new_category->name = $category_value;
             $new_category->save();
         }
     }
