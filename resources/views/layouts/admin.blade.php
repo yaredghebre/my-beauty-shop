@@ -29,7 +29,7 @@
 <body>
 
     {{-- PAGE HEADING --}}
-    <header class="w-full py-10 bg-gray-700 z-50 sticky top-0">
+    <header class="w-full py-7 bg-gray-700 z-50 sticky top-0">
         <div class="mx-[50px] flex items-center justify-between">
             {{-- Left Side --}}
             <a class="text-3xl text-white" href="/">My Beauty Shop</a>
@@ -169,7 +169,7 @@
         <!-- / Sidenav -->
 
         {{-- Main Content --}}
-        <div class="w-5/6 p-10">
+        <div class="w-5/6 px-10 py-5">
             @yield('content')
         </div>
     </main>

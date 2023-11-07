@@ -2,10 +2,24 @@
 
 @section('content')
     {{-- Heading --}}
-    <h1 class="text-center text-5xl">Perfumes</h1>
+    <h1 class="text-center text-3xl">Perfumes</h1>
+
+    {{-- Filter --}}
+    <form action="{{ route('admin.perfumes.index') }}" method="GET" class="mx-2 flex w-1/4 gap-2">
+        @csrf
+        <label for="" class="">
+            <select name="category_id" id="category" class="form-select">
+                <option value="">All</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+            <button type="submit" class="bg-green-500">Filtra</button>
+        </label>
+    </form>
 
     {{-- Table --}}
-    <div class="h-scree">
+    <div class="">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -15,9 +29,12 @@
                     <th scope="col" class="px-6 py-3">
                         Title
                     </th>
-                    <th scope="col" class="px-6 py-3">
-                        Gender
+                    {{-- <th scope="col" class="px-6 py-3">
+                        Category
                     </th>
+                    <th scope="col" class="px-6 py-3">
+                        Type
+                    </th> --}}
                     <th scope="col" class="px-6 py-3">
                         Brand
                     </th>
@@ -45,9 +62,12 @@
                         <td class="px-6 py-4">
                             {{ $perfume->title }}
                         </td>
-                        <td class="px-6 py-4">
-                            {{ $perfume->gender }}
+                        {{-- <td class="px-6 py-4">
+                            {{ $perfume->category }}
                         </td>
+                        <td class="px-6 py-4">
+                            {{ $perfume->type }}
+                        </td> --}}
                         <td class="px-6 py-4">
                             {{ $perfume->brand }}
                         </td>
