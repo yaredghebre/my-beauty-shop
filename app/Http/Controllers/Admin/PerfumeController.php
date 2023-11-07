@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Perfume;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class PerfumeController extends Controller
@@ -37,7 +38,9 @@ class PerfumeController extends Controller
      */
     public function create()
     {
-        return view('admin.perfumes.create');
+        $categories = Category::all();
+        $types = Type::all();
+        return view('admin.perfumes.create', compact('categories', 'types'));
     }
 
     /**

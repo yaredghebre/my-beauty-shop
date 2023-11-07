@@ -4,19 +4,26 @@
     {{-- Heading --}}
     <h1 class="text-center text-3xl">Perfumes</h1>
 
-    {{-- Filter --}}
-    <form action="{{ route('admin.perfumes.index') }}" method="GET" class=" my-2 flex w-1/4 gap-2">
-        @csrf
-        <label for="" class="rounded-md">
-            <select name="category_id" id="category" class="form-select">
-                <option value="">All</option>
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-            </select>
-            <button type="submit" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-700">Filtra</button>
-        </label>
-    </form>
+    {{-- Filter & Add --}}
+    <div class="w-full flex justify-between">
+        <form action="{{ route('admin.perfumes.index') }}" method="GET" class=" my-2 flex w-1/4 gap-2">
+            @csrf
+            <label for="" class="rounded-md">
+                <select name="category_id" id="category" class="form-select">
+                    <option value="">All</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                <button type="submit" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-700">Filtra</button>
+            </label>
+        </form>
+
+        <div
+            class="focus:outline-none text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:focus:ring-yellow-900">
+            <a href="{{ route('admin.perfumes.create') }}" class="text-xl text-dark">Aggiungi +</a>
+        </div>
+    </div>
 
     {{-- Table --}}
     <div class="">
@@ -116,7 +123,7 @@
             {{ $perfumes->links() }}
         </div>
         <div class="flex w-full items-center">
-            {{ $perfumes->links('pagination') }}
+            {{ $perfumes->links('partials.pagination') }}
         </div>
     </div>
 @endsection
