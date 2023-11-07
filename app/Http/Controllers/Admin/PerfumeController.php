@@ -18,8 +18,9 @@ class PerfumeController extends Controller
     {
         $data = $request->all();
 
+
         if ($request->has('category_id') && !is_null($data['category_id'])) {
-            $perfumes = Perfume::where('category_id', $data['category_id'])->paginate(15);
+            $perfumes = Perfume::where('category_id', $data['category_id'])->paginate(10);
         } else {
             $perfumes = Perfume::paginate(10);
         }

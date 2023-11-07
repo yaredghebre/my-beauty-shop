@@ -5,16 +5,16 @@
     <h1 class="text-center text-3xl">Perfumes</h1>
 
     {{-- Filter --}}
-    <form action="{{ route('admin.perfumes.index') }}" method="GET" class="mx-2 flex w-1/4 gap-2">
+    <form action="{{ route('admin.perfumes.index') }}" method="GET" class=" my-2 flex w-1/4 gap-2">
         @csrf
-        <label for="" class="">
+        <label for="" class="rounded-md">
             <select name="category_id" id="category" class="form-select">
                 <option value="">All</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
-            <button type="submit" class="bg-green-500">Filtra</button>
+            <button type="submit" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-700">Filtra</button>
         </label>
     </form>
 
@@ -29,12 +29,12 @@
                     <th scope="col" class="px-6 py-3">
                         Title
                     </th>
-                    {{-- <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3">
                         Category
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Type
-                    </th> --}}
+                    </th>
                     <th scope="col" class="px-6 py-3">
                         Brand
                     </th>
@@ -62,12 +62,23 @@
                         <td class="px-6 py-4">
                             {{ $perfume->title }}
                         </td>
-                        {{-- <td class="px-6 py-4">
-                            {{ $perfume->category }}
-                        </td>
-                        <td class="px-6 py-4">
-                            {{ $perfume->type }}
-                        </td> --}}
+
+                        @if ($perfume->category)
+                            <td class="px-6 py-4">
+                                {{ $perfume->category->name }}
+                            </td>
+                        @else
+                            <td class="px-6 py-4">N/A</td>
+                        @endif
+
+                        @if ($perfume->type)
+                            <td class="px-6 py-4">
+                                {{ $perfume->type->name }}
+                            </td>
+                        @else
+                            <td class="px-6 py-4">N/A</td>
+                        @endif
+
                         <td class="px-6 py-4">
                             {{ $perfume->brand }}
                         </td>
@@ -97,9 +108,15 @@
                     </tr>
                 @endforeach
 
-                {{-- Pagination --}}
-                {{ $perfumes->links() }}
             </tbody>
         </table>
+
+        {{-- Pagination --}}
+        <div class="my-2">
+            {{ $perfumes->links() }}
+        </div>
+        <div class="flex w-full items-center">
+            {{ $perfumes->links('pagination') }}
+        </div>
     </div>
 @endsection
