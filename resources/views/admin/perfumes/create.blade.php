@@ -111,10 +111,18 @@
                 </div>
             </div>
 
-
             <button
-                class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                class="w-[150px] h-[70px] bg-blue-200 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                 type="submit">Invia</button>
+
         </form>
+
+    </div>
+
+    <div>
+
+        <a href="{{ route('admin.perfumes.index') }}"
+            class="bg-green-100 hover:bg-green-500 text-dark font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded mt-3">&larr;
+            Torna ai prodotti</a>
     </div>
 @endsection

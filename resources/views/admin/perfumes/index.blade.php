@@ -125,5 +125,7 @@
         <div class="flex w-full items-center">
             {{ $perfumes->links('partials.pagination') }}
         </div>
+
+
     </div>
 @endsection
