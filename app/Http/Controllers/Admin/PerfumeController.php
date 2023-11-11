@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePerfumeRequest;
+use App\Http\Requests\UpdatePerfumeRequest;
 use App\Models\Category;
 use App\Models\Perfume;
 use App\Models\Type;
@@ -71,8 +72,6 @@ class PerfumeController extends Controller
         return redirect()->route('admin.perfumes.index')->with('message', "{$perfume->title} è stato aggiunto!");
     }
 
-
-
     /**
      * Display the specified resource.
      *
@@ -90,9 +89,11 @@ class PerfumeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Perfume $perfume)
     {
-        //
+        $categories = Category::all();
+        $types = Type::all();
+        return view('admin.perfumes.edit', compact('perfume', 'categories', 'types'));
     }
 
     /**
@@ -102,9 +103,30 @@ class PerfumeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePerfumeRequest $request, Perfume $perfume)
     {
-        //
+        $data = $request->validated();
+        if ($request->hasFile('image')) {
+
+            if ($perfume->image) {
+                Storage::delete($perfume->image);
+            }
+
+            $path = Storage::disk('public')->put('perfume_images', $request->image);
+            $perfume->image = $path;
+        }
+
+        $perfume->update($data);
+
+        if ($request->has('categories')) {
+            $perfume->category()->sync($request->categories);
+        }
+
+        if ($request->has('types')) {
+            $perfume->type()->sync($request->types);
+        }
+
+        return redirect()->route('admin.perfumes.index')->with('message', "{$perfume->title} è stato modificato con successo!");
     }
 
     /**

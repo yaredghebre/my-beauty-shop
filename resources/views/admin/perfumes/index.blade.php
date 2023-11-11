@@ -105,7 +105,7 @@
                                 <i class="fa-solid fa-magnifying-glass fa-xl hover:scale-125 transform transition duration-200"
                                     style="color: #00ff00;"></i>
                             </a>
-                            <a href="">
+                            <a href="{{ route('admin.perfumes.edit', $perfume->id) }}">
                                 <i class="fa-solid fa-pen-to-square fa-xl hover:scale-125 transform transition duration-200"
                                     style="color: #0000ff;"></i>
                             </a>
