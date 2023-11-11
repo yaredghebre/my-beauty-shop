@@ -3,6 +3,8 @@
 @section('content')
     <h1 class="text-center text-3xl">Add new Product</h1>
 
+    @include('partials.errors')
+
     <div class="container mx-auto my-10 border-4 rounded-lg bg-gray-200 border-gray-700 p-5">
         <form action="{{ route('admin.perfumes.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -45,7 +47,7 @@
 
             <div class="mb-3">
                 <label for="price" class="block mb-2 text-sm font-medium text-gray-900">Price:</label>
-                <input type="text"
+                <input type="number" step="0.01" min="1"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                     @error('price') is-invalid @enderror" id="price" name="price" value="{{ old('price') }}">
                 @error('price')
@@ -54,34 +56,6 @@
                     </div>
                 @enderror
             </div>
-
-            {{-- <div class="mb-3 border-2 border-gray-500 rounded-lg p-5">
-                <label for="category" class="text-sm font-medium text-gray-900 dark:text-white">Category:</label>
-                <select id="category" name="category_id"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/4 p-2.5 ">
-                    <option value=""></option>
-                    @foreach ($categories as $category)
-                        <option @selected(old('category_id') == $category->id) value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="mb-3 border-2 border-gray-500 rounded-lg p-5">
-                <h5 class="mb-2">Type:</h5>
-                <fieldset>
-                    @foreach ($types as $type)
-                        <div class="flex items-center mb-4">
-                            <input id="type-option-{{ $type->id }}" type="radio" name="types"
-                                value="{{ $type->id }}"
-                                class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600"
-                                <label for="type-option-{{ $type->id }}"
-                                class="block ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                            {{ $type->name }}
-                            </label>
-                        </div>
-                    @endforeach
-                </fieldset>
-            </div> --}}
 
             <div class="mb-3 border-2 border-gray-500 rounded-lg p-5">
                 <label for="category" class="text-sm font-medium text-gray-900 dark:text-white">Category:</label>

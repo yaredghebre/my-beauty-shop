@@ -28,7 +28,7 @@ class StorePerfumeRequest extends FormRequest
             'title' => ['required', 'max:150', Rule::unique('perfumes')],
             'brand' => 'required', 'max:50',
             'size' => 'required', 'max:10',
-            'price' => 'required', 'numeric',
+            'price' => 'required', 'numeric', 'min:0.01',
             'description' => 'nullable',
             'category' => ['required', 'exists:categories,id'],
             'type' => ['required', 'exists:types,id'],
@@ -41,12 +41,14 @@ class StorePerfumeRequest extends FormRequest
         return [
             'title.required' => 'Il titolo è obbligatorio',
             'title.max' => 'Il titolo non deve superare :max carattteri',
+            'brand.required' => 'La marca è obbligatoria',
+            'brand.max' => 'La marca non deve superare :max caratteri',
             'size.required' => 'La misura è obbligatoria',
             'size.max' => 'La misura non deve superare :max caratteri',
             'price.required' => 'Il prezzo è obbligatorio',
-            'price.max' => 'Il prezzo non deve superare :caratteri',
-            'category.required' => 'Campo obbligatorio',
-            'type.required' => 'Campo obbligatorio',
+            'price.min' => 'Inserisci un numero positivo',
+            'category.required' => 'La categoria è obbligatoria',
+            'type.required' => 'La tipologia è obbligatoria',
         ];
     }
 }
