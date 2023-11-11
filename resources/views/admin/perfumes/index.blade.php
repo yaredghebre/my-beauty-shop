@@ -109,10 +109,14 @@
                                 <i class="fa-solid fa-pen-to-square fa-xl hover:scale-125 transform transition duration-200"
                                     style="color: #0000ff;"></i>
                             </a>
-                            <a href="">
-                                <i class="fa-regular fa-trash-can fa-xl hover:scale-125 transform transition duration-200"
-                                    style="color: #ff0000;"></i>
-                            </a>
+                            <form action="{{ route('admin.perfumes.destroy', $perfume->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn-delete" data-product-name={{ $perfume->title }}>
+                                    <i class="fa-regular fa-trash-can fa-xl hover:scale-125 transform transition duration-200"
+                                        style="color: #ff0000;"></i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
@@ -130,4 +134,5 @@
 
 
     </div>
+    @include('partials.modal_delete')
 @endsection

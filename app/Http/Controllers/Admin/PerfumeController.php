@@ -135,8 +135,14 @@ class PerfumeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Perfume $perfume)
     {
-        //
+        if ($perfume->image) {
+            Storage::delete($perfume->image);
+        }
+
+        $perfume->delete();
+
+        return redirect()->route('admin.perfumes.index')->with('message', "{$perfume->title} è stato cancellato!");
     }
 }
