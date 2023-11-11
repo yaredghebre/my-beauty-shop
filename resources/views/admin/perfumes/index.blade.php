@@ -4,6 +4,8 @@
     {{-- Heading --}}
     <h1 class="text-center text-3xl">Perfumes</h1>
 
+    @include('partials.session_message')
+
     {{-- Filter & Add --}}
     <div class="w-full flex justify-between">
         <form action="{{ route('admin.perfumes.index') }}" method="GET" class=" my-2 flex w-1/4 gap-2">

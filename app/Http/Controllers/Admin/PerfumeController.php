@@ -62,7 +62,7 @@ class PerfumeController extends Controller
         $perfume->type_id = $request->type;
 
         if ($request->hasFile('image')) {
-            $path = Storage::disk('public')->put('perfumes_images', $request->file('image'));
+            $path = Storage::disk('public')->put('perfume_images', $request->image);
             $perfume->image = $path;
         }
 
