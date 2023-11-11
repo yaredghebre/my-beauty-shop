@@ -11,6 +11,6 @@ class Type extends Model
 
     public function perfumes()
     {
-        return $this->hasMany(Type::class);
+        return $this->hasMany(Perfume::class);
     }
 }

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePerfumeRequest;
 use App\Models\Category;
 use App\Models\Perfume;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PerfumeController extends Controller
 {
@@ -19,16 +21,16 @@ class PerfumeController extends Controller
     {
         $data = $request->all();
 
-
-        if ($request->has('category_id') && !is_null($data['category_id'])) {
+        if (($request->has('category_id') && !is_null($data['category_id'])) && ($request->has('type_id') && !is_null($data['type_id']))) {
             $perfumes = Perfume::where('category_id', $data['category_id'])->paginate(10);
+            $perfumes = Perfume::where('type_id', $data['type_id'])->paginate(10);
         } else {
             $perfumes = Perfume::paginate(10);
         }
-        // $perfumes = Perfume::paginate(15);
 
         $categories = Category::all();
-        return view('admin.perfumes.index', compact('perfumes', 'categories'));
+        $types = Type::all();
+        return view('admin.perfumes.index', compact('perfumes', 'categories', 'types'));
     }
 
     /**
@@ -49,10 +51,27 @@ class PerfumeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+    public function store(StorePerfumeRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $perfume = new Perfume();
+        $perfume->fill($data);
+        $perfume->category_id = $request->category;
+        $perfume->type_id = $request->type;
+
+        if ($request->hasFile('image')) {
+            $path = Storage::disk('public')->put('perfumes_images', $request->file('image'));
+            $perfume->image = $path;
+        }
+
+        $perfume->save();
+
+        return redirect()->route('admin.perfumes.index')->with('message', "{$perfume->title} è stato aggiunto!");
     }
+
+
 
     /**
      * Display the specified resource.

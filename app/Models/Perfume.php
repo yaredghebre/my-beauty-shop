@@ -9,7 +9,7 @@ class Perfume extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'brand', 'size', 'price', 'description', 'available'];
+    protected $fillable = ['title', 'brand', 'size', 'price', 'category_id', 'type_id', 'description', 'available', 'image'];
 
     public function category()
     {
