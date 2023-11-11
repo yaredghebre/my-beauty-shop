@@ -56,7 +56,11 @@
             </div>
 
         </div>
+    </div>
 
-
+    <div>
+        <a href="{{ route('admin.perfumes.index') }}"
+            class="bg-green-100 hover:bg-green-500 text-dark font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded mt-3">&larr;
+            Torna ai prodotti</a>
     </div>
 @endsection
