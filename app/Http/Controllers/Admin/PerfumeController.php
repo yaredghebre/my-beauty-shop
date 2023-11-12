@@ -18,21 +18,27 @@ class PerfumeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index(Request $request)
     {
-        $data = $request->all();
+        $query = Perfume::query();
 
-        if (($request->has('category_id') && !is_null($data['category_id'])) && ($request->has('type_id') && !is_null($data['type_id']))) {
-            $perfumes = Perfume::where('category_id', $data['category_id'])->paginate(10);
-            $perfumes = Perfume::where('type_id', $data['type_id'])->paginate(10);
-        } else {
-            $perfumes = Perfume::paginate(10);
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->category_id);
         }
+
+        if ($request->filled('type_id')) {
+            $query->where('type_id', $request->type_id);
+        }
+
+        $perfumes = $query->paginate(10);
 
         $categories = Category::all();
         $types = Type::all();
+
         return view('admin.perfumes.index', compact('perfumes', 'categories', 'types'));
     }
+
 
     /**
      * Show the form for creating a new resource.

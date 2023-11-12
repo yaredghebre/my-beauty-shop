@@ -14,7 +14,9 @@
                 <select name="category_id" id="category" class="form-select">
                     <option value="">All</option>
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        {{-- <option value="{{ $category->id }}">{{ $category->name }}</option> --}}
+                        <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                            {{ $category->name }}</option>
                     @endforeach
                 </select>
                 <button type="submit" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-700">Filtra</button>
