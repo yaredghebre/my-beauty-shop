@@ -10,11 +10,18 @@ class PerfumeController extends Controller
 {
     public function index(Request $request)
     {
+        $query = Perfume::with('category', 'type');
+
         if ($request->has('category_id')) {
-            $perfumes = Perfume::with('category')->where('category_id', $request->category_id)->paginate(10);
-        } else {
-            $perfumes = Perfume::with('category')->paginate(10);
+            $query->where('category_id', $request->category_id);
         }
+
+        if ($request->has('type_id')) {
+            $query->where('type_id', $request->type_id);
+        }
+
+        $perfumes = $query->paginate(10);
+
         return response()->json([
             'success' => true,
             'results' => $perfumes
@@ -23,7 +30,8 @@ class PerfumeController extends Controller
 
     public function show($id)
     {
-        $perfume = Perfume::with('category')->where('id', $id)->first();
+        $perfume = Perfume::with('category', 'type')->where('id', $id)->first();
+
         if ($perfume) {
             return response()->json([
                 'success' => true,
