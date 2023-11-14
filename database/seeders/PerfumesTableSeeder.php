@@ -24,6 +24,8 @@ class PerfumesTableSeeder extends Seeder
             $perfume->size = $faker->randomElement(["Small", "Medium", "Large"]);
             $perfume->price = $faker->randomFloat(2, 10, 200);
             $perfume->description = $faker->text();
+            $perfume->category_id = $faker->randomElement([1, 2]);
+            $perfume->type_id = $faker->randomElement([1, 2, 3, 4]);
             $perfume->save();
         }
     }

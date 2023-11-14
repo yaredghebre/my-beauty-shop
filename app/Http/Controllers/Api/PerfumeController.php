@@ -20,7 +20,7 @@ class PerfumeController extends Controller
             $query->where('type_id', $request->type_id);
         }
 
-        $perfumes = $query->paginate(10);
+        $perfumes = $query->paginate(9);
 
         return response()->json([
             'success' => true,
