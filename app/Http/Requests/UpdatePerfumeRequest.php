@@ -25,7 +25,7 @@ class UpdatePerfumeRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'max:150', Rule::unique('perfumes')],
+            'title' => ['required', 'max:150', Rule::unique('perfumes')->ignore($this->perfume)],
             'brand' => 'required', 'max:50',
             'size' => 'required', 'max:10',
             'price' => 'required', 'numeric', 'min:0.01',
