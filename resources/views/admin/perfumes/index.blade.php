@@ -14,7 +14,6 @@
                 <select name="category_id" id="category" class="form-select">
                     <option value="">All</option>
                     @foreach ($categories as $category)
-                        {{-- <option value="{{ $category->id }}">{{ $category->name }}</option> --}}
                         <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
                             {{ $category->name }}</option>
                     @endforeach
@@ -29,8 +28,8 @@
         </div>
     </div>
 
-    {{-- Table --}}
-    <div class="">
+    {{-- TABLE --}}
+    <div>
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>

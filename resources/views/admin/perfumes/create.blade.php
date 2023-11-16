@@ -6,9 +6,12 @@
     @include('partials.errors')
 
     <div class="container mx-auto my-10 border-4 rounded-lg bg-gray-200 border-gray-700 p-5">
+
+        {{-- FORM BODY --}}
         <form action="{{ route('admin.perfumes.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
+            {{-- Title --}}
             <div class="mb-3">
                 <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Title:</label>
                 <input type="text"
@@ -21,6 +24,7 @@
                 @enderror
             </div>
 
+            {{-- Brand --}}
             <div class="mb-3">
                 <label for="brand" class="block mb-2 text-sm font-medium text-gray-900">Brand:</label>
                 <input type="text"
@@ -33,6 +37,7 @@
                 @enderror
             </div>
 
+            {{-- Size --}}
             <div class="mb-3">
                 <label for="size" class="block mb-2 text-sm font-medium text-gray-900">Size:</label>
                 <input type="text"
@@ -45,6 +50,7 @@
                 @enderror
             </div>
 
+            {{-- Price --}}
             <div class="mb-3">
                 <label for="price" class="block mb-2 text-sm font-medium text-gray-900">Price:</label>
                 <input type="number" step="0.01" min="1"
@@ -57,6 +63,7 @@
                 @enderror
             </div>
 
+            {{-- Category --}}
             <div class="mb-3 border-2 border-gray-500 rounded-lg p-5">
                 <label for="category" class="text-sm font-medium text-gray-900 dark:text-white">Category:</label>
                 <select id="category" name="category"
@@ -68,6 +75,7 @@
                 </select>
             </div>
 
+            {{-- Type --}}
             <div class="mb-3 border-2 border-gray-500 rounded-lg p-5">
                 <h5 class="mb-2">Type:</h5>
                 <fieldset>
@@ -85,8 +93,7 @@
                 </fieldset>
             </div>
 
-
-
+            {{-- Description --}}
             <div class="mb-3 border-2 border-gray-500 rounded-lg p-5">
                 <label for="description"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description:</label>
@@ -95,6 +102,7 @@
                     id="description" rows="3" name="description">{{ old('description') }}</textarea>
             </div>
 
+            {{-- Image --}}
             <div class="mb-3 border-2 border-gray-500 rounded-lg p-5">
                 <label for="image-input" class="block mb-2 text-sm font-medium text-gray-900">Image:</label>
                 <input type="file"
@@ -105,22 +113,17 @@
                         {{ $message }}
                     </div>
                 @enderror
-
-                <div class="my-3">
-                    <img src="" id="image-preview" class="hidden w-1/4" alt="">
-                </div>
             </div>
 
             <button
                 class="w-[150px] h-[70px] bg-blue-200 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                 type="submit">Invia</button>
-
         </form>
-
+        {{-- / FORM BODY --}}
     </div>
 
+    {{-- BACK --}}
     <div>
-
         <a href="{{ route('admin.perfumes.index') }}"
             class="bg-green-100 hover:bg-green-500 text-dark font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded mt-3">&larr;
             Torna ai prodotti</a>

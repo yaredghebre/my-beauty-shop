@@ -1,9 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="">
+    <div>
 
+        {{-- CONTAINER --}}
         <div class="flex justify-center">
+
+            {{-- CARD --}}
             <div class="max-w-2xl bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 
                 {{-- Card Image --}}
@@ -18,27 +21,36 @@
 
                 {{-- Card Body --}}
                 <div class="p-5">
+
+                    {{-- Title --}}
                     <h5 class="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $perfume->title }}
                     </h5>
+
+                    {{-- Description --}}
                     @if ($perfume->description)
                         <p class="mb-3 text-2xl text-gray-700 dark:text-gray-400">{{ $perfume->description }}</p>
                     @else
                         <p class="mb-3 text-2xl text-gray-700 dark:text-gray-400">No description available</p>
                     @endif
 
+
                     <ul class="text-xl">
+
+                        {{-- Category --}}
                         @if ($perfume->category)
                             <li>Category: <span class="font-bold text-2xl">{{ $perfume->category->name }}</span></li>
                         @else
                             <li>Category: <span class="font-bold text-2xl">N/A</span></li>
                         @endif
 
+                        {{-- Type --}}
                         @if ($perfume->type)
                             <li>Type: <span class="font-bold text-2xl">{{ $perfume->type->name }}</span></li>
                         @else
                             <li>Type: <span class="font-bold text-2xl">N/A</span></li>
                         @endif
 
+                        {{-- Others --}}
                         <li>Brand: <span class="font-bold">{{ $perfume->brand }}</span> </li>
                         <li>Size: <span class="font-bold">{{ $perfume->size }}</span> </li>
                         <li>Price: <span class="font-bold">€ {{ $perfume->price }}</span> </li>
@@ -51,13 +63,16 @@
                             </span>
                         </li>
                     </ul>
-
                 </div>
             </div>
+            {{-- / CARD --}}
 
         </div>
+        {{-- / CONTAINER --}}
+
     </div>
 
+    {{-- BACK --}}
     <div>
         <a href="{{ route('admin.perfumes.index') }}"
             class="bg-green-100 hover:bg-green-500 text-dark font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded mt-3">&larr;
